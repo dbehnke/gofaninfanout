@@ -25,6 +25,7 @@ jobs:
       - run:
           name: Build for mac windows linux
           command: |
+            echo $CIRCLE_BUILD_NUM
             mkdir gofaninfanout
             GOOS=darwin GOARCH=amd64 go build -o gofaninfanout/gofaninfanout-darwin
             GOOS=windows GOARCH=amd64 go build -o gofaninfanout/gofaninfanout-windows.exe
