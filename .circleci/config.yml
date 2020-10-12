@@ -22,10 +22,13 @@ jobs:
       - checkout
 
       # specify any bash command here prefixed with `run: `
-      - run: mkdir gofaninfanout
-      - run: GOOS=darwin GOARCH=amd64 go build -o gofaninfanout/gofaninfanout-darwin
-      - run: GOOS=windows GOARCH=amd64 go build -o gofaninfanout/gofaninfanout-windows.exe
-      - run: GOOS=linux GOARCH=amd64 go build -o gofaninfanout/gofaninfanout-linux
-      - run: tar cvfz gofaninfanout-${CIRCLE_BUILD_NUM}.tar.gz gofaninfanout
+      - run:
+        name: Build for mac, windows, linux
+        command: |
+          mkdir gofaninfanout
+          GOOS=darwin GOARCH=amd64 go build -o gofaninfanout/gofaninfanout-darwin
+          GOOS=windows GOARCH=amd64 go build -o gofaninfanout/gofaninfanout-windows.exe
+          GOOS=linux GOARCH=amd64 go build -o gofaninfanout/gofaninfanout-linux
+          tar cvfz gofaninfanout-$CIRCLE_BUILD_NUM.tar.gz gofaninfanout
       - store_artifacts:
-          path: ./gofaninfanout-${CIRCLE_BUILD_NUM}.tar.gz
+          path: ./gofaninfanout-$CIRCLE_BUILD_NUM.tar.gz
