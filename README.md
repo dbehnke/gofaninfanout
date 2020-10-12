@@ -1,6 +1,7 @@
 # gofaninfanout
 goofing around with go - fan in and fan out with go routines and channels
 
+![CircleCI](https://img.shields.io/circleci/build/github/dbehnke/gofaninfanout)
 
 ## goals
 
