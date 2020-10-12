@@ -26,6 +26,6 @@ jobs:
       - run: GOOS=darwin GOARCH=amd64 go build -o gofaninfanout/gofaninfanout-darwin
       - run: GOOS=windows GOARCH=amd64 go build -o gofaninfanout/gofaninfanout-windows.exe
       - run: GOOS=linux GOARCH=amd64 go build -o gofaninfanout/gofaninfanout-linux
-      - run: tar cvfz gofaninfanout-<< pipeline.id >>.tar.gz gofaninfanout
+      - run: tar cvfz gofaninfanout-${CIRCLE_BUILD_NUM}.tar.gz gofaninfanout
       - store_artifacts:
-          path: ./gofaninfanout.tar.gz
+          path: ./gofaninfanout-${CIRCLE_BUILD_NUM}.tar.gz
