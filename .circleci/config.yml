@@ -31,6 +31,8 @@ jobs:
             GOOS=windows GOARCH=amd64 go build -o gofaninfanout/gofaninfanout-windows.exe
             GOOS=linux GOARCH=amd64 go build -o gofaninfanout/gofaninfanout-linux
             tar cvfz ./gofaninfanout-$CIRCLE_BUILD_NUM.tar.gz gofaninfanout
+            mkdir dist
+            mv *.gz dist
       - store_artifacts:
-          path: ./gofaninfanout-{{CIRCLE_BUILD_NUM}}.tar.gz
+          path: ./dist
   
